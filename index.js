@@ -12,11 +12,11 @@ app.use(express.json());
 
 // rotas
 const motorista = require("./routes/motoristaRoutes");
-app.use("/", motorista);
+app.use("/bencar", motorista);
 
 // Porta de uso
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, '0.0.0.0', () => {
+app.listen(PORT, () => {
     console.log(`Ouvindo na porta ${PORT}...`);
 });
