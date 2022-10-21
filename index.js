@@ -13,7 +13,10 @@ app.use(express.json());
 // rotas
 const motorista = require("./routes/motoristaRoutes");
 
-app.use("/motorista", motorista);
+app.use("/", motorista);
+app.get("/", (req, res) => {
+    res.json({ message: "Oi" });
+})
 
 const PORT = process.env.PORT || 3000;
 

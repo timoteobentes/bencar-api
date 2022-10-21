@@ -1,10 +1,19 @@
 const mongoose = require("mongoose");
 
-const Motorista = mongoose.model("Motorista", {
-    nome: String,
-    cpf: String,
-    telefone: String,
-    placaCarro: String
+const motoristaSchema = mongoose.Schema({
+    nome: {
+        type: String
+    },
+    cpf: {
+        type: String
+    },
+    telefone: {
+        type: String
+    },
+    placaCarro: {
+        type: String
+    }
 });
 
+const Motorista = mongoose.model("Motorista", motoristaSchema);
 module.exports = Motorista;

@@ -1,23 +1,32 @@
 const router = require("express").Router();
 const Motorista = require("../model/Motorista");
 
-router.post("/", (req, res) => {
-    const { nome, cpf, telefone, placaCarro } = req.body;
+router.post("/motorista", (req, res) => {
 
-    const motorista = {
-        nome,
-        cpf,
-        telefone,
-        placaCarro
-    }
+    const motorista = Motorista(req.body);
 
-    try {
-        Motorista.create(motorista);
+    motorista
+        .save()
+        .then((data) => res.json(data))
+        .catch((error) => res.json({ message: error }));
+    // const { nome } = req.body;
+ 
+    // if(!nome) {
+    //     res.status(422).json({ message: "Complete os campos" });
+    //     return;
+    // }
 
-        res.status(201).send({ message: "Motorista cadastrado com sucesso!" });
-    } catch(error) {
-        console.log(error);
-    }
+    // const motorista = {
+    //     nome
+    // }
+
+    // try {
+    //     Motorista.create(motorista);
+
+    //     res.status(201).json({ message: "Motorista cadastrado com sucesso!" });
+    // } catch(error) {
+    //     console.log(error);
+    // }
 })
 
 module.exports = router;
