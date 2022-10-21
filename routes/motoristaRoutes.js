@@ -1,32 +1,17 @@
+// Dependencias
 const router = require("express").Router();
-const Motorista = require("../model/Motorista");
+const motoristaController = require("../controller/motoristaController");
 
-router.post("/motorista", (req, res) => {
+// GET - exibe lista de motoristas
+router.get("/consulta", motoristaController.consulta);
 
-    const motorista = Motorista(req.body);
+// POST - cadastra motorista
+router.post("/cadastro", motoristaController.inserir);
 
-    motorista
-        .save()
-        .then((data) => res.json(data))
-        .catch((error) => res.json({ message: error }));
-    // const { nome } = req.body;
- 
-    // if(!nome) {
-    //     res.status(422).json({ message: "Complete os campos" });
-    //     return;
-    // }
+// PUT - edita motorista
+router.put("/editar", motoristaController.editar);
 
-    // const motorista = {
-    //     nome
-    // }
-
-    // try {
-    //     Motorista.create(motorista);
-
-    //     res.status(201).json({ message: "Motorista cadastrado com sucesso!" });
-    // } catch(error) {
-    //     console.log(error);
-    // }
-})
+// DELETE - deleta motorista
+router.delete("/deletar", motoristaController.deletar);
 
 module.exports = router;

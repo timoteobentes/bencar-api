@@ -1,5 +1,7 @@
+// Dependencias
 const mongoose = require("mongoose");
 
+// Schema da coleção(tabela)
 const motoristaSchema = mongoose.Schema({
     nome: {
         type: String
@@ -15,5 +17,4 @@ const motoristaSchema = mongoose.Schema({
     }
 });
 
-const Motorista = mongoose.model("Motorista", motoristaSchema);
-module.exports = Motorista;
+module.exports =  mongoose.model("Motorista", motoristaSchema);
