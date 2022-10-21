@@ -12,7 +12,7 @@ app.use(express.json());
 
 // rotas
 const motorista = require("./routes/motoristaRoutes");
-app.use(motorista);
+app.use("/", motorista);
 
 // Porta de uso
 const PORT = process.env.PORT || 3000;
