@@ -35,19 +35,18 @@ module.exports = {
 
     // Função que edita dados do motorista no BD
     async editar(req, res) {
-        const id = await Motorista.findById(req.params.id)
+        const cpf = await Motorista.findById(req.params.cpf)
 
-        const { nome, cpf, telefone, placaCarro } = req.body;
+        const { nome, telefone, placaCarro } = req.body;
 
         const motorista = {
             nome,
-            cpf,
             telefone,
             placaCarro
         }
 
         try {
-            await Motorista.updateOne(id, motorista);
+            await Motorista.updateOne(cpf, motorista);
 
             res.status(200).json(motorista);
         } catch(error) {
@@ -57,7 +56,7 @@ module.exports = {
 
     // Função que deleta motorista do BD
     async deletar(req, res) {
-        const motorista = await Motorista.findById(req.params.id);
+        const motorista = await Motorista.findById(req.params.cpf);
 
         try {
             await Motorista.deleteOne(motorista);
